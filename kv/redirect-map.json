@@ -1,0 +1,17 @@
+[
+  {
+    "sourcePath": "/platform/old-security-overview",
+    "targetPath": "/platform/security/control-plane",
+    "type": "301"
+  },
+  {
+    "sourcePath": "/lp/q3-demand-sprint",
+    "targetPath": "/campaigns/q3-demand-sprint",
+    "type": "rewrite"
+  },
+  {
+    "sourcePath": "/trial",
+    "targetPath": "/get-started/demo",
+    "type": "rewrite"
+  }
+]
