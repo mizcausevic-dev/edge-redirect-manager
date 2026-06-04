@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0
+- refreshed `edge-redirect-manager` onto the current Kinetic Gain GTM release rail
+- added static `site/` prerender output and GitHub Pages workflow
+- configured `redirects.kineticgain.com` as the public custom-domain target
+- updated metadata, README, and release packaging for `v1.1-shipped`
+
 ## 2023
 - Early notes on redirect-map governance, campaign vanity routing, and migration-safe URL preservation.
 

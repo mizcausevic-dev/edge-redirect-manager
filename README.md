@@ -1,6 +1,9 @@
 # Edge Redirect Manager
 
-TypeScript control plane for large redirect maps, edge rewrites, campaign continuity, and migration-safe URL behavior.
+Board-ready Kinetic Gain surface for large redirect maps, edge rewrites, campaign continuity, and migration-safe URL behavior.
+
+- Live: [http://redirects.kineticgain.com/](http://redirects.kineticgain.com/)
+- Repo: [https://github.com/mizcausevic-dev/edge-redirect-manager](https://github.com/mizcausevic-dev/edge-redirect-manager)
 
 ## Why this exists
 
@@ -11,6 +14,13 @@ Redirect work looks technical until it breaks revenue:
 - attribution continuity breaks because rewrites and redirects are handled ad hoc
 
 `edge-redirect-manager` treats edge routing as a growth and platform concern at the same time. It keeps redirect intent, cache behavior, and migration risk visible in one place.
+
+## What it includes
+
+- TypeScript control plane for redirect maps, rewrites, cache policy, and migration-safe routing
+- synthetic redirect lane covering campaign vanity URLs, SEO continuity, and large route migrations
+- reusable outputs for rule risk, cache posture, and migration breakage exposure
+- prerendered static site, JSON payloads, screenshots, docs, and edge-worker artifacts
 
 ## Routes
 
@@ -53,10 +63,8 @@ Open:
 
 ## Validation
 
-- `npm run build`
-- `npm run test`
-- `npm run demo`
-- `npm run smoke`
+- `npm run verify`
+- `npm run prerender`
 - `npm run render:assets`
 
 ## Edge Assets
