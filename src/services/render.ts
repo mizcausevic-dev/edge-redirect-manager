@@ -94,6 +94,14 @@ function layout(title: string, activePath: string, body: string) {
       .section { margin-top: 24px; display: grid; gap: 20px; }
       .metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
       .panel { padding: 22px; border-radius: 26px; border: 1px solid var(--line); background: var(--panel); }
+      .depth-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+      .depth-card {
+        padding: 20px; border-radius: 24px; border: 1px solid rgba(123, 164, 255, 0.18);
+        background: linear-gradient(180deg, rgba(15, 27, 44, 0.86), rgba(9, 19, 33, 0.72));
+      }
+      .depth-card h3 { margin: 10px 0; font-size: 24px; line-height: 1.1; letter-spacing: -0.02em; }
+      .depth-card p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.58; }
+      .story { border-left: 4px solid var(--accent); }
       .metric-label { color: #8fb6ea; letter-spacing: 0.18em; font-size: 12px; text-transform: uppercase; }
       .metric-value { margin-top: 14px; font-size: 44px; font-weight: 750; line-height: 1; }
       .metric-copy { margin-top: 12px; font-size: 14px; color: var(--muted); line-height: 1.5; }
@@ -144,6 +152,39 @@ function layout(title: string, activePath: string, body: string) {
 </html>`;
 }
 
+function productDepthSection() {
+  return `
+    <section class="section">
+      <article class="panel">
+        <p class="eyebrow">What this product does</p>
+        <h2 class="section-title">Edge Redirect Manager turns URL changes into a controlled revenue, SEO, and platform release system.</h2>
+        <p class="section-copy">The product keeps redirect rules, cache behavior, campaign rewrites, and migration risk visible in one board-readable surface so site changes do not silently break attribution, search equity, paid traffic, or buyer trust.</p>
+        <div class="depth-grid">
+          <div class="depth-card story">
+            <p class="eyebrow">SaaS go-to-market analyst lens</p>
+            <h3>Protects demand capture during migrations and campaign changes.</h3>
+            <p>Marketing can see which routes preserve branded traffic, paid campaign paths, trial flows, partner links, and high-intent landing pages before a launch turns into broken measurement or lost pipeline.</p>
+          </div>
+          <div class="depth-card">
+            <p class="eyebrow">SaaS value architect lens</p>
+            <h3>Connects technical URL hygiene to measurable business risk.</h3>
+            <p>The surface frames redirects as revenue infrastructure: fewer dead ends, cleaner attribution, stronger SEO continuity, and less platform toil when web properties, CMS paths, and campaign routes change.</p>
+          </div>
+          <div class="depth-card">
+            <p class="eyebrow">Technical proof</p>
+            <h3>Models redirect intent, cache posture, migration risk, and JSON outputs.</h3>
+            <p>Engineers can inspect the rule table, migration-risk register, cache classes, API outputs, smoke checks, and prerendered static site instead of treating the page as a thin marketing wrapper.</p>
+          </div>
+          <div class="depth-card">
+            <p class="eyebrow">What these repos have in common</p>
+            <h3>They turn hidden platform operations into operator-safe decision surfaces.</h3>
+            <p>Across Kinetic Gain, each repo makes an invisible failure mode explicit, attaches it to a buyer-readable outcome, and gives both technical and non-technical reviewers a concrete artifact to inspect.</p>
+          </div>
+        </div>
+      </article>
+    </section>`;
+}
+
 export function renderOverview() {
   const stats = summary();
   const cacheList = cacheRules()
@@ -156,6 +197,7 @@ export function renderOverview() {
       <h1>Redirects protect more than SEO. They protect campaigns, attribution, and inbound trust.</h1>
       <p>Manage redirect maps, campaign rewrites, and migration-safe routing so high-intent traffic keeps resolving cleanly while marketing, SEO, and platform teams change the site underneath it.</p>
     </section>
+    ${productDepthSection()}
     <section class="section">
       <div class="metrics">
         <article class="panel">
@@ -307,6 +349,7 @@ export function renderDocs() {
       <h1>Modeled as an edge-routing control plane for migrations and campaigns.</h1>
       <p>This repo combines route logic, cache strategy, and migration risk so platform teams can protect inbound continuity while the site structure evolves.</p>
     </section>
+    ${productDepthSection()}
     <section class="section">
       <div class="cols-2">
         <article class="panel">
