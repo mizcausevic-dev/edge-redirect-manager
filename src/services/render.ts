@@ -102,6 +102,13 @@ function layout(title: string, activePath: string, body: string) {
       .depth-card h3 { margin: 10px 0; font-size: 24px; line-height: 1.1; letter-spacing: -0.02em; }
       .depth-card p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.58; }
       .story { border-left: 4px solid var(--accent); }
+      .workflow-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+      .workflow-card {
+        padding: 20px; border-radius: 24px; border: 1px solid rgba(123, 164, 255, 0.18);
+        background: rgba(6, 15, 27, 0.72);
+      }
+      .workflow-card h3 { margin: 10px 0; font-size: 22px; line-height: 1.16; }
+      .workflow-card p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.58; }
       .metric-label { color: #8fb6ea; letter-spacing: 0.18em; font-size: 12px; text-transform: uppercase; }
       .metric-value { margin-top: 14px; font-size: 44px; font-weight: 750; line-height: 1; }
       .metric-copy { margin-top: 12px; font-size: 14px; color: var(--muted); line-height: 1.5; }
@@ -126,8 +133,13 @@ function layout(title: string, activePath: string, body: string) {
       ul.clean { margin: 16px 0 0; padding-left: 18px; color: #dbe7fb; }
       ul.clean li { margin-top: 10px; line-height: 1.5; }
       code { background: rgba(14, 25, 41, 0.9); padding: 2px 6px; border-radius: 8px; }
+      .site-footer {
+        margin-top: 30px; padding: 20px 4px 0; display: flex; flex-wrap: wrap; gap: 14px;
+        color: var(--muted); font-size: 13px; border-top: 1px solid rgba(143, 182, 234, 0.12);
+      }
+      .site-footer a { color: #dce8ff; }
       @media (max-width: 1100px) {
-        .metrics, .cols-2 { grid-template-columns: 1fr; }
+        .metrics, .cols-2, .workflow-grid { grid-template-columns: 1fr; }
         nav { justify-content: flex-start; }
         .topbar { flex-direction: column; align-items: flex-start; }
       }
@@ -147,6 +159,13 @@ function layout(title: string, activePath: string, body: string) {
         <nav>${nav}</nav>
       </header>
       ${body}
+      <footer class="site-footer">
+        <a href="http://redirects.kineticgain.com/">redirects.kineticgain.com</a>
+        <a href="https://kineticgain.com/">Kinetic Gain</a>
+        <a href="https://portfolio.kineticgain.com/">Portfolio</a>
+        <a href="https://github.com/mizcausevic-dev/edge-redirect-manager">GitHub</a>
+        <a href="/docs">Docs</a>
+      </footer>
     </main>
   </body>
 </html>`;
@@ -179,6 +198,34 @@ function productDepthSection() {
             <p class="eyebrow">What these repos have in common</p>
             <h3>They turn hidden platform operations into operator-safe decision surfaces.</h3>
             <p>Across Kinetic Gain, each repo makes an invisible failure mode explicit, attaches it to a buyer-readable outcome, and gives both technical and non-technical reviewers a concrete artifact to inspect.</p>
+          </div>
+        </div>
+      </article>
+    </section>`;
+}
+
+function operatingWorkflowSection() {
+  return `
+    <section class="section">
+      <article class="panel">
+        <p class="eyebrow">Operating workflow</p>
+        <h2 class="section-title">The page explains who should act, what breaks, and how the redirect map proves the fix.</h2>
+        <p class="section-copy">A useful redirect system has to speak to SEO, RevOps, platform engineering, and executives at once. This section makes the handoff explicit so reviewers can understand the product without reading the source code first.</p>
+        <div class="workflow-grid" style="margin-top: 18px;">
+          <div class="workflow-card">
+            <p class="eyebrow">Before launch</p>
+            <h3>Map every route to intent and owner.</h3>
+            <p>Classify the path as SEO continuity, campaign continuity, migration cleanup, or application routing. Each rule needs a clear owner and a reason it exists.</p>
+          </div>
+          <div class="workflow-card">
+            <p class="eyebrow">During release</p>
+            <h3>Watch breakage where business value is highest.</h3>
+            <p>Prioritize pricing, demo, trial, docs, partner, and high-authority pages so paid and organic traffic do not disappear into stale URLs.</p>
+          </div>
+          <div class="workflow-card">
+            <p class="eyebrow">After release</p>
+            <h3>Turn routing outcomes into evidence.</h3>
+            <p>Use the JSON outputs, static proof pages, and screenshots to show which risks were contained and which routes still need cleanup before the next launch.</p>
           </div>
         </div>
       </article>
@@ -235,7 +282,7 @@ export function renderOverview() {
       </div>
     </section>`;
 
-  return layout("Edge Redirect Manager", "/", body);
+  return layout("Edge Redirect Manager", "/", `${body}${operatingWorkflowSection()}`);
 }
 
 export function renderRedirectLane() {
@@ -279,7 +326,7 @@ export function renderRedirectLane() {
       </article>
     </section>`;
 
-  return layout("Edge Redirect Manager - Redirect Lane", "/redirect-lane", body);
+  return layout("Edge Redirect Manager - Redirect Lane", "/redirect-lane", `${body}${operatingWorkflowSection()}`);
 }
 
 export function renderMigrationRisk() {
@@ -319,7 +366,7 @@ export function renderMigrationRisk() {
       </article>
     </section>`;
 
-  return layout("Edge Redirect Manager - Migration Risk", "/migration-risk", body);
+  return layout("Edge Redirect Manager - Migration Risk", "/migration-risk", `${body}${operatingWorkflowSection()}`);
 }
 
 export function renderVerification() {
@@ -339,7 +386,7 @@ export function renderVerification() {
       </article>
     </section>`;
 
-  return layout("Edge Redirect Manager - Verification", "/verification", body);
+  return layout("Edge Redirect Manager - Verification", "/verification", `${body}${operatingWorkflowSection()}`);
 }
 
 export function renderDocs() {
@@ -377,5 +424,5 @@ export function renderDocs() {
       </div>
     </section>`;
 
-  return layout("Edge Redirect Manager - Docs", "/docs", body);
+  return layout("Edge Redirect Manager - Docs", "/docs", `${body}${operatingWorkflowSection()}`);
 }
